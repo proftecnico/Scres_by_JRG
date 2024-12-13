@@ -17,7 +17,7 @@ print(header)
 
 # Configura el puerto serie
 try:
-    ser = serial.Serial('COM3', 9600, timeout=1)  # Reemplaza 'COM#' con el puerto correcto
+    ser = serial.Serial('COM6', 9600, timeout=1)  # Reemplaza 'COM#' con el puerto correcto
     print("Conexión establecida con el puerto serial.")
 except serial.SerialException as e:
     print(f"Error al abrir el puerto serial: {e}")
@@ -32,7 +32,7 @@ def mostrar_barra_progreso(porcentaje, longitud=30):
 
 # Verifica que el puerto se haya abierto correctamente
 if ser and ser.is_open:
-    file_path = r'C:\Users\Jorge\Downloads\concatenado.scres'
+    file_path = r'C:\SCRES\concatenado.scres'
     try:
         with open(file_path, 'r') as file:
             lines = file.readlines()
@@ -51,7 +51,7 @@ if ser and ser.is_open:
                     # Lee la respuesta del Arduino si es necesario
                     if ser.in_waiting > 0:
                         response = ser.readline().decode().strip()
-                        print(f"\nTracker responde: {response}")
+                        print(f"\nArduino responde: {response}")
 
         print("\nEnvío de datos completado.")
         
